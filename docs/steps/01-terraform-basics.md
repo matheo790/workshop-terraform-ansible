@@ -89,5 +89,5 @@ terraform destroy
 - [ ] Après le `apply`, l'URL `http://localhost:8080/health` répond un JSON.
 - [ ] Après le `destroy`, `docker ps` ne montre plus les conteneurs du lab.
 
-> 📚 **Pour aller plus loin** : Consultez l'[exercice détaillé Ex01](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex01-terraform-hello-infra-plan-apply-destroy) avec critères de validation complets.
+> 📚 **Pour aller plus loin** : Consultez l'[exercice détaillé Ex01](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex01-terraform-hello-infra-plan-apply-destroy/enonce.md) avec critères de validation complets.
 

@@ -57,4 +57,4 @@ ansible -i inventory.ini vm -m ping
 
 > **Troubleshooting** : Si le ping échoue avec "Connection refused", vérifiez que le conteneur SSH tourne (`docker ps`) et que le port 2222 est bien mappé.
 
-> 📚 **Pour aller plus loin** : Consultez l'[exercice détaillé Ex03](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex03-terraform-ansible-generer-inventory-ini-automatiquement) pour comprendre la génération dynamique d'inventory.
+> 📚 **Pour aller plus loin** : Consultez l'[exercice détaillé Ex03](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex03-terraform-ansible-generer-inventory-ini-automatiquement/enonce.md) pour comprendre la génération dynamique d'inventory.

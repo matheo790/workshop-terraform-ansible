@@ -83,5 +83,5 @@ curl http://localhost:80/health
 - Chaque workspace a son propre fichier d'état (`terraform.tfstate.d/<workspace>/`).
 - Une mauvaise gestion des workspaces peut écraser la prod avec une conf de dev si on ne fait pas attention au `select`.
 
-> 📚 **Pour aller plus loin** : Consultez l'[exercice détaillé Ex02](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex02-terraform-variables-workspaces-dev-prod) avec exemples de code HCL complets.
+> 📚 **Pour aller plus loin** : Consultez l'[exercice détaillé Ex02](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex02-terraform-variables-workspaces-dev-prod/enonce.md) avec exemples de code HCL complets.
 

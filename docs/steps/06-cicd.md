@@ -54,4 +54,4 @@ Vous pouvez nettoyer :
 make destroy
 ```
 
-> 📚 **Pour aller plus loin** : Consultez l'[exercice détaillé Ex06](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex06-chainage-makefile-mini-ci-cd-local) avec un Makefile complet et des targets avancées.
+> 📚 **Pour aller plus loin** : Consultez l'[exercice détaillé Ex06](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex06-chainage-makefile-mini-ci-cd-local/enonce.md) avec un Makefile complet et des targets avancées.

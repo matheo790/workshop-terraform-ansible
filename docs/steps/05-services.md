@@ -45,5 +45,5 @@ curl http://localhost:8080
 ```
 (Ou le port défini pour le load balancer/proxy).
 
-> 📚 **Pour aller plus loin** : Consultez l'[exercice détaillé Ex05](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex05-ansible-nginx-reverse-proxy-handlers) pour maîtriser les handlers et templates Jinja2.
+> 📚 **Pour aller plus loin** : Consultez l'[exercice détaillé Ex05](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex05-ansible-nginx-reverse-proxy-handlers/enonce.md) pour maîtriser les handlers et templates Jinja2.
 

@@ -54,4 +54,4 @@ Dans ce lab spécifique, Ansible configure un conteneur qui lui-même lance des 
 - [ ] Le premier run Ansible termine sans erreur (`failed=0`).
 - [ ] Le second run indique `changed=0`.
 
-> 📚 **Pour aller plus loin** : Consultez l'[exercice détaillé Ex04](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex04-ansible-bootstrap-docker-deploiement-app-idempotence) avec exemples complets de rôles Ansible.
+> 📚 **Pour aller plus loin** : Consultez l'[exercice détaillé Ex04](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex04-ansible-bootstrap-docker-deploiement-app-idempotence/enonce.md) avec exemples complets de rôles Ansible.
