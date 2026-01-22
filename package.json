@@ -1,0 +1,16 @@
+{
+  "name": "devops-local-workshop",
+  "version": "1.0.0",
+  "description": "DevOps Local Workshop Documentation",
+  "scripts": {
+    "docs:gen": "node scripts/build-workshop.mjs",
+    "docs:serve": "npm run docs:gen && moaw serve docs/workshop.md",
+    "docs:serve:instructor": "npm run docs:gen && moaw serve docs/workshop.instructor.md",
+    "docs:build": "npm run docs:gen && moaw build docs/workshop.md",
+    "docs:build:instructor": "npm run docs:gen && moaw build docs/workshop.instructor.md"
+  },
+  "author": "MOAW Builder",
+  "devDependencies": {
+    "@moaw/cli": "^1.5.1"
+  }
+}
