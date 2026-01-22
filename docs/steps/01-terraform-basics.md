@@ -7,79 +7,81 @@
 - À insister : `plan` avant `apply`
 <!-- INSTRUCTOR:END -->
 
-**Objectif** : Provisionner une infrastructure de base (réseau + conteneurs) via Terraform.
+**Objectif** : Créer vos premiers fichiers Terraform from scratch et comprendre le cycle de vie IaC (Init, Plan, Apply, Destroy).
 
 ## Contexte
 
-Nous voulons créer :
+Vous allez **créer 3 fichiers Terraform** pour provisionner :
 - Un réseau Docker isolé : `devops-local-lab-dev-net`
 - Un conteneur pour l'application (Python)
 - Un conteneur pour le serveur web (Nginx)
 
-## Instructions
+⚠️ **Important** : Le dossier `infra/terraform/` est vide au départ. C'est normal ! Vous allez créer les fichiers étape par étape.
 
-### 1. Build de l'image applicative
+## Vue d'ensemble des fichiers à créer
 
-Terraform va déployer des conteneurs basés sur une image. Construisons l'image de notre application Flask d'abord.
+1. **`versions.tf`** : Déclare la version de Terraform requise
+2. **`providers.tf`** : Configure le provider Docker
+3. **`main.tf`** : Définit les ressources (réseau, images, conteneurs)
 
-```bash
-# Depuis la racine du projet
-docker build -t devops-local-lab-flask:latest app/
-```
+## Instructions rapides
 
-### 2. Initialisation de Terraform
+### 1. Créer les fichiers Terraform
 
-Rendez-vous dans le dossier infrastructure :
+Suivez l'[exercice détaillé Ex01](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex01-terraform-hello-infra-plan-apply-destroy/enonce.md) qui vous guide **ligne par ligne** dans la création de :
+- `infra/terraform/versions.tf`
+- `infra/terraform/providers.tf`
+- `infra/terraform/main.tf`
+
+Chaque fichier est expliqué en détail avec la signification de chaque ligne.
+
+### 2. Initialiser Terraform
+
+Une fois vos fichiers créés :
 
 ```bash
 cd infra/terraform
-```
-
-Initialisez le projet (téléchargement des providers) :
-
-```bash
 terraform init
 ```
 
-### 3. Planifier le déploiement
+Terraform télécharge le provider Docker.
 
-Vérifiez ce que Terraform compte faire sans rien modifier :
+### 3. Valider et formater
+
+```bash
+terraform fmt      # Formate le code
+terraform validate # Vérifie la syntaxe
+```
+
+### 4. Planifier le déploiement
 
 ```bash
 terraform plan
 ```
-> **Attention** : Observez la sortie. Terraform doit annoncer la création de `docker_network`, `docker_container.app`, etc.
 
-### 4. Appliquer les changements
+Observez la sortie : Terraform annonce la création de `docker_network`, `docker_image`, `docker_container`.
 
-Lancez le provisionning :
+### 5. Appliquer les changements
 
 ```bash
 terraform apply
-# Répondez 'yes' à la confirmation
 ```
 
-### 5. Vérification
+Répondez `yes` pour confirmer.
 
-Testez si les conteneurs tournent. L'application expose une route de santé :
+### 6. Vérification
 
 ```bash
 curl http://localhost:8080/health
 # Résultat attendu : {"status":"ok"}
-```
 
-Vous pouvez aussi voir les conteneurs via Docker :
-```bash
 docker ps --format "table {{.Names}}\t{{.Ports}}"
 ```
 
-### 6. Nettoyage
-
-Pour s'entraîner au cycle de vie complet, détruisons l'infrastructure :
+### 7. Nettoyage
 
 ```bash
 terraform destroy
-# Répondez 'yes'
 ```
 
 ***

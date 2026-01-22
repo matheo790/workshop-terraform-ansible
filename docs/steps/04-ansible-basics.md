@@ -1,52 +1,78 @@
 # 6. Ansible : Bootstrap & Déploiement App
 
-**Objectif** : Configurer le serveur (conteneur) et y déployer l'application de manière idempotente.
+**Objectif** : Créer vos premiers **rôles Ansible** from scratch (bootstrap, docker, app) et comprendre l'**idempotence**.
 
 ## Contexte
 
-Notre infra est là (`terraform`), notre inventaire est prêt. Maintenant, Ansible entre en scène pour :
-1. **Bootstrap** : Installer les dépendances système (Docker, Python, curl...).
-2. **Déployer** : Lancer l'application via Docker Compose (piloté par Ansible).
+Vous allez créer la structure complète Ansible :
+- **Rôles** : Modules réutilisables pour des fonctions spécifiques
+- **Playbook** : Fichier orchestrant les rôles
+- **Handlers** : Actions déclenchées uniquement si changement
 
-## Instructions
+## Vue d'ensemble
 
-### 1. Analyse du Playbook
+Fichiers à créer :
+1. **`site.yml`** : Playbook principal
+2. **Rôle `bootstrap`** : Installation packages de base (curl, git, python3-pip)
+3. **Rôle `docker`** : Installation Docker + Docker Compose
+4. **Rôle `app`** : Déploiement de l'application Flask
 
-Regardez le fichier `infra/ansible/site.yml`. Il orchestre les rôles.
-Les rôles sont dans `infra/ansible/roles/`.
+Chaque rôle contient :
+- `tasks/main.yml` : Liste des tâches
+- `templates/` : Templates Jinja2 (pour `app`)
+- `handlers/main.yml` : Handlers (pour `app`)
 
-### 2. Exécuter le Playbook
+## Instructions détaillées
 
-Lancez la configuration :
+Suivez l'[exercice détaillé Ex04](https://github.com/othila-academy/workshop-terraform-ansible/tree/main/exercises/ex04-ansible-bootstrap-docker-deploiement-app-idempotence/enonce.md) qui explique :
+
+1. **Création de la structure** des rôles (dossiers)
+2. **Création de chaque fichier** avec explications ligne par ligne :
+   - Modules Ansible (`apt`, `file`, `template`, `systemd`, `user`, `pip`)
+   - Syntaxe YAML
+   - Variables et tags
+3. **Concept d'idempotence** : Pourquoi et comment
+
+## Instructions rapides
+
+### 1. Créer la structure
 
 ```bash
 cd infra/ansible
-ansible-playbook -i inventory.ini site.yml
+mkdir -p roles/{bootstrap,docker,app}/{tasks,templates,handlers}
 ```
 
-Observez les tâches :
-- `TASK [bootstrap : install packages]`
-- `TASK [app : copy docker-compose]`
-- `TASK [app : start application]`
+### 2. Créer les fichiers YAML
 
-### 3. Vérifier l'Idempotence
+Pour chaque rôle, créez `tasks/main.yml` avec les tâches appropriées.
 
-La force d'Ansible est l'idempotence : relancer le même script ne doit rien casser et ne rien changer si tout est déjà OK.
+### 3. Créer le playbook
 
-Relancez la commande :
+Créez `infra/ansible/site.yml` qui orchestre les 3 rôles.
+
+### 4. Valider la syntaxe
+
+```bash
+ansible-playbook site.yml --syntax-check
+```
+
+### 5. Exécuter le playbook
+
 ```bash
 ansible-playbook -i inventory.ini site.yml
 ```
 
-Regardez le récapitulatif `PLAY RECAP` à la fin.
-- `changed=0` : C'est parfait !
-- `changed > 0` : Quelque chose a été modifié, ce n'est pas idempotent.
+Observez les tâches qui s'exécutent.
 
-### 4. Vérifier l'application
+### 6. Vérifier l'idempotence
 
-Si le playbook est passé, l'application devrait tourner *dans* le conteneur cible (ou sur la machine hôte selon le mode de déploiement choisi dans le lab).
+Relancez immédiatement :
 
-Dans ce lab spécifique, Ansible configure un conteneur qui lui-même lance des conteneurs (Docker-in-Docker ou socket mapping) ou configure le service.
+```bash
+ansible-playbook -i inventory.ini site.yml
+```
+
+Le `PLAY RECAP` doit afficher `changed=0` → Preuve d'idempotence !
 
 ***
 

@@ -38,8 +38,3 @@ infra/
 5. **[Ex05](../exercises/ex05-ansible-nginx-reverse-proxy-handlers/)** : Nginx et handlers
 6. **[Ex06](../exercises/ex06-chainage-makefile-mini-ci-cd-local/)** : Makefile pipeline
 
-## 💡 Solution complète
-
-Si vous êtes bloqué, consultez le dossier [`infra-solution/`](../infra-solution/) qui contient la solution finale.
-
-**Mais essayez d'abord par vous-même !** 🎓
